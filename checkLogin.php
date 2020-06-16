@@ -11,7 +11,7 @@
 	else
 	{
 
-		$connection = mysqli_connect("localhost","root","","trainingfptcompany");
+		$connection = mysqli_connect("ec2-34-197-141-7.compute-1.amazonaws.com","mubdeioelkvfbs","6c60949584821757776a6c754b281e60bb333eb75190a9ee99493bef29b1373d","d27fb1npujtjac");
 		$username = stripslashes($_POST["txtUsername"]);
 		$username = mysqli_real_escape_string($connection, $username);
 		$password = stripslashes($_POST["txtPassword"]);
