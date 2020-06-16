@@ -11,14 +11,12 @@
 	else
 	{
 
-		$connection = mysqli_connect("ec2-34-197-141-7.compute-1.amazonaws.com","mubdeioelkvfbs","6c60949584821757776a6c754b281e60bb333eb75190a9ee99493bef29b1373d","d27fb1npujtjac");
-		$username = stripslashes($_POST["txtUsername"]);
-		$username = mysqli_real_escape_string($connection, $username);
-		$password = stripslashes($_POST["txtPassword"]);
-		$password = mysqli_real_escape_string($connection, $password);
+		$connection = pg_connect("host=ec2-34-197-141-7.compute-1.amazonaws.com dbname=d27fb1npujtjac user=mubdeioelkvfbs password=6c60949584821757776a6c754b281e60bb333eb75190a9ee99493bef29b1373d");
+		$username = $_POST["txtUsername"];
+		$password = $_POST["txtPassword"];
 		$sql = "SELECT * FROM tblAdmin WHERE _user = '".$username."' AND _password = '".$password."'";
-		$result = mysqli_query($connection, $sql) or die(mysqli_errno($connection));
-		$row = mysqli_num_rows($result);
+		$result = pg_query($connection, $sql);
+		$row = pg_num_rows($result);
 		if ($row == 1)
 		{
 			?>
